@@ -1,0 +1,10 @@
+resources:
+   metadata:
+     name: ibmcloudEnablement
+   resourceDefs:
+     files:
+    #  - ref: files/install/install.sh
+    #  - ref: files/install/values-metadata.yaml
+    #  - ref: files/install/README.md
+     - ref: files/pre-install/pre-install.sh
+     - ref: files/pre-install/README.md

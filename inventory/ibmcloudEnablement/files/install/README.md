@@ -1,0 +1,1 @@
+No install script required. Use pre-install script instead.

@@ -1,0 +1,1 @@
+(FROM pacakge README.md) The IBM Starter Collection for Openshift installs new starter templates into the Developer Catalog for an OpenShift cluster so that OpenShift developers can easily find and use them. All the templates in this collection run on OpenShift, but automatically provision and use managed services from the IBM Cloud public catalog.
