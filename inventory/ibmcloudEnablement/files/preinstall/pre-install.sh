@@ -24,39 +24,10 @@ function check_exit_custom {
     fi
 }
 
-for arg in "$@"
-do
-    if [ "$arg" == "--help" ] || [ "$arg" == "-h" ]; then
-        usage
-        exit 0
-    fi
-
-    if [[ $arg == --apikey=* ]]; then
-        API_KEY=$( echo $arg | cut -d'=' -f 2 )
-    fi
-
-    if [[ $arg == --resource-group-id=* ]]; then
-        RESOURCE_GROUP=$( echo $arg | cut -d'=' -f 2 )
-    fi
-
-    if [[ $arg == --cluster-name=* ]]; then
-        CLUSTER_NAME=$( echo $arg | cut -d'=' -f 2 )
-    fi
-
-    if [[ $arg == --template-file=* ]]; then
-        TEMPLATE_FILE=$( echo $arg | cut -d'=' -f 2 )
-    fi
-done
-
-if [[ -z "$TEMPLATE_FILE" ]]; then
-    TEMPLATE_FILE=$PWD/openshift/templates/clone.json
-fi
-echo "Using template file $TEMPLATE_FILE"
-
-check_input "$API_KEY" "No API key was supplied. A valid IBM Cloud API key is required to login to the IBM Cloud. Use 'ibmcloud iam api-key-create' to create an API key."
-check_input "$RESOURCE_GROUP" "No resource group ID was supplied. Execute 'ibmcloud resource groups' to list resource groups."
-check_input "$CLUSTER_NAME" "No cluster name was supplied. Execute 'ibmcloud ks clusters' to list available clusters."
-check_input "$TEMPLATE_FILE" "No template file was supplied."
+API_KEY=MP1LXkQTlKs78GHCsv8LNC9t5Wqjem8oY4ZSvw-oOWFD
+RESOURCE_GROUP=Default
+CLUSTER_NAME=myROKScluster
+TEMPLATE_FILE=https://ibm.box.com/s/fjfx0a39h3fyeeytih49zum1n1ex2tib
 
 echo -e "\nLogging in"
 ibmcloud login --apikey $API_KEY
