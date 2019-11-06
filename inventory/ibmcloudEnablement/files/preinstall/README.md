@@ -1,0 +1,1 @@
+from readme.  There is not pre-install script

@@ -1,1 +1,52 @@
-placeholder
+###############################################################################
+# Copyright (c) 2017 IBM Corp.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+###############################################################################
+
+
+#resourceGroup
+resourceGroup:
+  __metadata:
+    label: "Resource Group"
+    description: "Resource group for the cluster to which you will add the collection."
+    type: string
+    required: true
+    default: default
+
+#clusterName
+clusterName:
+  __metadata:
+    label: "Cluster Name"
+    description: "Name of the cluster to which you will add the collection."
+    type: string
+    required: true
+    default: myCluster
+
+#templateFile
+templateFile:
+  __metadata:
+    label: "Template File"
+    description: "Location of the template collection you want installed in your cluster catalog."
+    type: string
+    required: true
+    default: ~/openshift/templates/clone.json
+
+#apiKey
+apiKey:
+  __metadata:
+    label: "IBM Cloud API Key"
+    description: "API Key for IBM Cloud."
+    type: string
+    required: true
+    default: 

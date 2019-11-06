@@ -1,1 +1,1 @@
-No install script required. Use pre-install script instead.
+This is the install script readme.
