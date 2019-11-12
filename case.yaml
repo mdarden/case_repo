@@ -1,14 +1,14 @@
   specVersion: 0.0.1
-  name: imb_starter_collecton_for_openshift
+  name: ibm_starter_collecton_for_openshift
   displayName: "IBM Starter Collection for Openshift"
-  version: 0.0.0.1
+  version: 0.0.45-alpha
   description:  "IBM Starter Collection for Openshift prototype"
   displayDescription: "The IBM Starter Collection for Openshift installs new starter templates into the Developer Catalog for an OpenShift cluster so that OpenShift developers can easily find and use them. All the templates in this collection run on OpenShift, but automatically provision and use managed services from the IBM Cloud public catalog. "
   webPage: https://cloud.ibm.com/docs
   icons:
   - base64: iVBORw0KGgoAAAAN ... ==
     mediaType: image/png
-    url: "https://.../icp4data.png"
+    url: "https://sdtimes.com/wp-content/uploads/2019/02/cloud.png"
   organization:  "IBM"
   webPage: "http://ibm.com"
   licenses:
