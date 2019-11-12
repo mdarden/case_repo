@@ -50,3 +50,21 @@ apiKey:
     type: string
     required: true
     default: 
+
+#roksToken
+roksToken:
+  __metadata:
+    label: "ROKS Token"
+    description: "Token for managed OpenShift on IBM Cloud."
+    type: string
+    required: true
+    default: 
+    
+#roksServer
+roksServer:
+  __metadata:
+    label: "ROKS Server"
+    description: "Server URL for managed OpenShift on IBM Cloud."
+    type: string
+    required: true
+    default: 
