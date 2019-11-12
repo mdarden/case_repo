@@ -82,9 +82,12 @@ oc login ${ROKS_SERVER} -u apikey -p ${API_KEY}
 # echo -e ${ROKS_SERVER}
 # oc login --token=${ROKS_TOKEN} --server=${ROKS_SERVER}
 
+#install ks plugin
+ibmcloud plugin install ks -f
+
 echo -e "\nApplying cluster configuration for cluster ${CLUSTER_NAME}"
-# $( ibmcloud ks cluster config ${CLUSTER_NAME} --admin | grep export)
-$( ibmcloud cs cluster config ${CLUSTER_NAME} --admin | grep export)
+$( ibmcloud ks cluster config ${CLUSTER_NAME} --admin | grep export)
+# $( ibmcloud cs cluster config ${CLUSTER_NAME} --admin | grep export)
 check_exit "Failed to apply cluster configuration for cluster ${CLUSTER_NAME}. Check the cluster name and try again."
 
 echo -e "\nInstalling Operator Lifecycle Manager"
