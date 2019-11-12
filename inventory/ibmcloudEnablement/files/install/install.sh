@@ -83,7 +83,8 @@ oc login ${ROKS_SERVER} -u apikey -p ${API_KEY}
 # oc login --token=${ROKS_TOKEN} --server=${ROKS_SERVER}
 
 #install ks plugin
-ibmcloud plugin install ks -f
+echo -e "\nInstalling ks plugin"
+ibmcloud plugin install kubernetes-service -f
 
 echo -e "\nApplying cluster configuration for cluster ${CLUSTER_NAME}"
 $( ibmcloud ks cluster config ${CLUSTER_NAME} --admin | grep export)
