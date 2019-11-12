@@ -78,9 +78,9 @@ function check_exit_custom {
 # ibmcloud login --apikey ${API_KEY}
 # ibmcloud target --cf -g ${RESOURCE_GROUP}
 echo -e "\nLogging in to openshift"
-# oc login -u apikey -p ${API_KEY}
-echo -e ${ROKS_SERVER}
-oc login --token=${ROKS_TOKEN} --server=${ROKS_SERVER}
+oc login -u apikey -p ${API_KEY} --server=${ROKS_SERVER}
+# echo -e ${ROKS_SERVER}
+# oc login --token=${ROKS_TOKEN} --server=${ROKS_SERVER}
 
 echo -e "\nApplying cluster configuration for cluster ${CLUSTER_NAME}"
 $( ibmcloud ks cluster config ${CLUSTER_NAME} --admin | grep export)
