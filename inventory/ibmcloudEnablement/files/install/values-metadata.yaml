@@ -31,7 +31,7 @@ clusterName:
     description: "Name of the cluster to which you will add the collection."
     type: string
     required: true
-    default: myCluster
+    default: myROKSCluster
 
 #templateFile
 templateFile:
@@ -40,7 +40,7 @@ templateFile:
     description: "Location of the template collection you want installed in your cluster catalog."
     type: string
     required: true
-    default: ~/openshift/templates/clone.json
+    default: https://github.com/mdarden/nodejs-cloudant/blob/master/openshift/templates/clone.json
 
 #apiKey
 apiKey:
