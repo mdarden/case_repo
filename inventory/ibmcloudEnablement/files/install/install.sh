@@ -72,6 +72,7 @@ function check_exit_custom {
 # check_input "$TEMPLATE_FILE" "No template file was supplied."
 
 echo -e "\nLogging in"
+ibmcloud api https://test.cloud.ibm.com
 ibmcloud login --apikey ${API_KEY}
 ibmcloud target --cf -g ${RESOURCE_GROUP}
 oc login -u apikey -p ${API_KEY}
