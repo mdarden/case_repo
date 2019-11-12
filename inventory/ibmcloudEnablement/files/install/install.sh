@@ -71,10 +71,11 @@ function check_exit_custom {
 # check_input "$CLUSTER_NAME" "No cluster name was supplied. Execute 'ibmcloud ks clusters' to list available clusters."
 # check_input "$TEMPLATE_FILE" "No template file was supplied."
 
-echo -e "\nLogging in"
-ibmcloud api https://test.cloud.ibm.com
-ibmcloud login --apikey ${API_KEY}
-ibmcloud target --cf -g ${RESOURCE_GROUP}
+# echo -e "\nLogging in"
+# ibmcloud api https://test.cloud.ibm.com
+# ibmcloud login --apikey ${API_KEY}
+# ibmcloud target --cf -g ${RESOURCE_GROUP}
+echo -e "\nLogging in to openshift"
 oc login -u apikey -p ${API_KEY}
 
 echo -e "\nApplying cluster configuration for cluster ${CLUSTER_NAME}"
