@@ -12,6 +12,8 @@ export RESOURCE_GROUP=${resourceGroup}
 export CLUSTER_NAME=${clusterName}
 export TEMPLATE_FILE=${templateFile}
 export API_KEY=${apiKey}
+export ROKS_TOKEN=${osToken}
+export ROKS_SERVER=${roksServer}
 
 function usage {
     echo "Usage: ./ibm-ocp-template-install.sh --apikey=<api_key> --resource-group-id=<resource_group_id> --cluster-name=<cluster_name> [--template-file=template_file]"
@@ -76,7 +78,8 @@ function check_exit_custom {
 # ibmcloud login --apikey ${API_KEY}
 # ibmcloud target --cf -g ${RESOURCE_GROUP}
 echo -e "\nLogging in to openshift"
-oc login -u apikey -p ${API_KEY}
+# oc login -u apikey -p ${API_KEY}
+oc login --token={ROKS_TOKEN} --server={ROKS_SERVER}
 
 echo -e "\nApplying cluster configuration for cluster ${CLUSTER_NAME}"
 $( ibmcloud ks cluster config ${CLUSTER_NAME} --admin | grep export)
