@@ -88,7 +88,7 @@ ibmcloud plugin install container-service -f
 
 echo -e "\nApplying cluster configuration for cluster ${CLUSTER_NAME}"
 # $( ibmcloud ks cluster config ${CLUSTER_NAME} --admin | grep export)
-$( ibmcloud cs cluster config ${CLUSTER_NAME} --admin | grep export)
+$( ibmcloud cs cluster config ${CLUSTER_NAME} -u apikey -p ${API_KEY} --admin  | grep export)
 check_exit "Failed to apply cluster configuration for cluster ${CLUSTER_NAME}. Check the cluster name and try again."
 
 echo -e "\nInstalling Operator Lifecycle Manager"
