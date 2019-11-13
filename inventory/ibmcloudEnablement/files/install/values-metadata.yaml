@@ -22,7 +22,7 @@ resourceGroup:
     description: "Resource group for the cluster to which you will add the collection."
     type: string
     required: true
-    default: default
+    default: Default
 
 #clusterName
 clusterName:
