@@ -73,30 +73,31 @@ function check_exit_custom {
 # check_input "$CLUSTER_NAME" "No cluster name was supplied. Execute 'ibmcloud ks clusters' to list available clusters."
 # check_input "$TEMPLATE_FILE" "No template file was supplied."
 
-echo -e "\nLogging in"
+echo -e "\nLogging in to IBM Cloud...\n"
 # ibmcloud api https://test.cloud.ibm.com
 ibmcloud login -a https://test.cloud.ibm.com -r us-south --apikey ${API_KEY}
 ibmcloud target --cf -g ${RESOURCE_GROUP}
 
-echo -e "\nLogging in to openshift"
+echo -e "\nLogging in to openshift...\n"
 oc login ${ROKS_SERVER} -u apikey -p ${API_KEY}
 # echo -e ${ROKS_SERVER}
 # oc login --token=${ROKS_TOKEN} --server=${ROKS_SERVER}
 
 #install ks plugin
-echo -e "\nInstalling ks plugin"
+echo -e "\nInstalling ks plugin...\n"
 ibmcloud plugin install container-service -f
 
-# echo -e "\nApplying cluster configuration for cluster ${CLUSTER_NAME}"
+echo -e "\nApplying cluster configuration for cluster ${CLUSTER_NAME}...\n"
 # $( ibmcloud ks cluster config ${CLUSTER_NAME} --admin | grep export)
 # $( ibmcloud cs cluster config ${CLUSTER_NAME} --admin  | grep export)
-# check_exit "Failed to apply cluster configuration for cluster ${CLUSTER_NAME}. Check the cluster name and try again."
+$( ibmcloud oc cluster config ${CLUSTER_NAME} --admin  | grep export)
+check_exit "Failed to apply cluster configuration for cluster ${CLUSTER_NAME}. Check the cluster name and try again."
 
-echo -e "\nInstalling Operator Lifecycle Manager"
+echo -e "\nInstalling Operator Lifecycle Manager...\n"
 kubectl apply -f https://github.com/operator-framework/operator-lifecycle-manager/releases/download/0.12.0/crds.yaml && kubectl apply -f https://github.com/operator-framework/operator-lifecycle-manager/releases/download/0.12.0/olm.yaml
 check_exit "Failed to install the Operator Lifecycle Manager. Check the command output and try again."
 
-echo -e "\nInstalling Marketplace Operator"
+echo -e "\nInstalling Marketplace Operator...\n"
 OM_TEMP_DIR=om_temp
 mkdir $OM_TEMP_DIR
 cd $OM_TEMP_DIR
@@ -109,14 +110,14 @@ rm -rf ./$OM_TEMP_DIR
 check_exit_custom $GIT_CLONE_EXIT "Failed to download Operator Marketplace resource definitions. Ensure that you are connected to the Internet and can access GitHub."
 check_exit_custom $OC_APPLY_EXIT "Failed to install Operator Marketplace. Check the command output and try again."
 
-echo -e "\nInstalling IBM Cloud Operator"
+echo -e "\nInstalling IBM Cloud Operator...\n"
 kubectl apply -f https://operatorhub.io/install/ibmcloud-operator.yaml
 check_exit "Failed to deploy IBM Cloud Operator. Ensure the ${CLUSTER_NAME} cluster is available."
 curl -sL https://raw.githubusercontent.com/IBM/cloud-operators/master/hack/config-operator.sh | bash
 check_exit "Failed to configure IBM Cloud Operator. Check the command output and try again."
 
 # Create and manually install a new template to the catalog -- this will also be scoped for that cluster only.
-echo -e "\nInstalling template ${TEMPLATE_FILE}"
+echo -e "\nInstalling template ${TEMPLATE_FILE}...\n"
 oc -n openshift apply -f "${TEMPLATE_FILE}"
 check_exit "Failed to install template ${TEMPLATE_FILE}. Ensure the template definition is valid and try again."
 echo -e "\nTemplate installation succeeded!"
