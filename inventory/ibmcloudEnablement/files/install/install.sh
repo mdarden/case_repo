@@ -84,11 +84,11 @@ oc login ${ROKS_SERVER} -u apikey -p ${API_KEY}
 
 #install ks plugin
 echo -e "\nInstalling ks plugin"
-ibmcloud plugin install kubernetes-service -f
+ibmcloud plugin install container-service -f
 
 echo -e "\nApplying cluster configuration for cluster ${CLUSTER_NAME}"
-$( ibmcloud ks cluster config ${CLUSTER_NAME} --admin | grep export)
-# $( ibmcloud cs cluster config ${CLUSTER_NAME} --admin | grep export)
+# $( ibmcloud ks cluster config ${CLUSTER_NAME} --admin | grep export)
+$( ibmcloud cs cluster config ${CLUSTER_NAME} --admin | grep export)
 check_exit "Failed to apply cluster configuration for cluster ${CLUSTER_NAME}. Check the cluster name and try again."
 
 echo -e "\nInstalling Operator Lifecycle Manager"
