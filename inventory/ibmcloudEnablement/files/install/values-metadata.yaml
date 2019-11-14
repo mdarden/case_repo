@@ -31,7 +31,7 @@ clusterName:
     description: "Name of the cluster to which you will add the collection."
     type: string
     required: true
-    default: myROKSCluster
+    default: myROKScluster
 
 #templateFile
 templateFile:
