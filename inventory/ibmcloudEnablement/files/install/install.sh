@@ -77,6 +77,10 @@ echo -e "\nLogging in to IBM Cloud...\n"
 # ibmcloud api https://test.cloud.ibm.com
 ibmcloud login -a https://test.cloud.ibm.com -r us-south --apikey ${API_KEY}
 
+#install ks plugin
+echo -e "\nInstalling ks plugin...\n"
+ibmcloud plugin install container-service -f
+
 # ibmcloud target --cf -r us-south -g ${RESOURCE_GROUP}
 echo -e "\nListing clusters...\n"
 ibmcloud ks cluster ls
@@ -84,7 +88,7 @@ ibmcloud ks cluster ls
 echo -e "\nListing resource groups...\n"
 ibmcloud resource groups
 
-echo -e "\nTargeting cf resource group ${RESOURCE_GROUP}...\n"
+echo -e "\nTargeting resource group ${RESOURCE_GROUP}...\n"
 ibmcloud target -r us-south -g ${RESOURCE_GROUP}
 
 echo -e "\nLogging in to openshift...\n"
@@ -92,14 +96,10 @@ oc login ${ROKS_SERVER} -u apikey -p ${API_KEY}
 # echo -e ${ROKS_SERVER}
 # oc login --token=${ROKS_TOKEN} --server=${ROKS_SERVER}
 
-#install ks plugin
-echo -e "\nInstalling ks plugin...\n"
-ibmcloud plugin install container-service -f
-
 echo -e "\nApplying cluster configuration for cluster ${CLUSTER_NAME}...\n"
 # $( ibmcloud ks cluster config ${CLUSTER_NAME} --admin | grep export)
 # $( ibmcloud cs cluster config ${CLUSTER_NAME} --admin  | grep export)
-$( ibmcloud oc cluster config ${CLUSTER_NAME} --admin  | grep export)
+$( ibmcloud ks cluster config ${CLUSTER_NAME} --admin  | grep export)
 check_exit "Failed to apply cluster configuration for cluster ${CLUSTER_NAME}. Check the cluster name and try again."
 
 echo -e "\nInstalling Operator Lifecycle Manager...\n"
