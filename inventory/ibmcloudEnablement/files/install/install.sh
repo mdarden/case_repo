@@ -76,6 +76,8 @@ function check_exit_custom {
 echo -e "\nLogging in to IBM Cloud...\n"
 # ibmcloud api https://test.cloud.ibm.com
 ibmcloud login -a https://test.cloud.ibm.com -r us-south --apikey ${API_KEY}
+
+echo -e "\nTargeting cf resource group ${RESOURCE_GROUP}...\n"
 ibmcloud target --cf -g ${RESOURCE_GROUP}
 
 echo -e "\nLogging in to openshift...\n"
