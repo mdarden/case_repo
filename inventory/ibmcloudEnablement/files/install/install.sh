@@ -77,8 +77,15 @@ echo -e "\nLogging in to IBM Cloud...\n"
 # ibmcloud api https://test.cloud.ibm.com
 ibmcloud login -a https://test.cloud.ibm.com -r us-south --apikey ${API_KEY}
 
+# ibmcloud target --cf -r us-south -g ${RESOURCE_GROUP}
+echo -e "\nListing clusters...\n"
+ibmcloud ks cluster ls
+
+echo -e "\nListing resource groups...\n"
+ibmcloud resource groups
+
 echo -e "\nTargeting cf resource group ${RESOURCE_GROUP}...\n"
-ibmcloud target --cf -r us-south -g ${RESOURCE_GROUP}
+ibmcloud target -r us-south -g ${RESOURCE_GROUP}
 
 echo -e "\nLogging in to openshift...\n"
 oc login ${ROKS_SERVER} -u apikey -p ${API_KEY}
