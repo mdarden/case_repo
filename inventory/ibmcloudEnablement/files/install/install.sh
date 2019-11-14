@@ -89,7 +89,8 @@ echo -e "\nListing resource groups...\n"
 ibmcloud resource groups
 
 echo -e "\nTargeting resource group ${RESOURCE_GROUP}...\n"
-ibmcloud target -r us-south -g ${RESOURCE_GROUP}
+# ibmcloud target -r us-south -g ${RESOURCE_GROUP}
+ibmcloud target --cf-api https://test.cloud.ibm.com -o mdarden@us.ibm.com -s dev -r us-south -g ${RESOURCE_GROUP}
 
 echo -e "\nLogging in to openshift...\n"
 oc login ${ROKS_SERVER} -u apikey -p ${API_KEY}
@@ -121,7 +122,7 @@ check_exit_custom $OC_APPLY_EXIT "Failed to install Operator Marketplace. Check 
 
 echo -e "\nInstalling IBM Cloud Operator...\n"
 echo -e "\n   Deploying IBM Cloud Operator...\n"
-kubectl apply -f https://operatorhub.io/install/ibmcloud-operator.yaml --validate=false
+kubectl apply -f https://operatorhub.io/install/ibmcloud-operator.yaml
 check_exit "Failed to deploy IBM Cloud Operator. Ensure the ${CLUSTER_NAME} cluster is available."
 echo -e "\n   Configuring IBM Cloud Operator...\n"
 curl -sL https://raw.githubusercontent.com/IBM/cloud-operators/master/hack/config-operator.sh | bash
