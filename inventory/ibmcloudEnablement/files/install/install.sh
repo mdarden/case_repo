@@ -120,8 +120,10 @@ check_exit_custom $GIT_CLONE_EXIT "Failed to download Operator Marketplace resou
 check_exit_custom $OC_APPLY_EXIT "Failed to install Operator Marketplace. Check the command output and try again."
 
 echo -e "\nInstalling IBM Cloud Operator...\n"
+echo -e "\n   Deploying IBM Cloud Operator...\n"
 kubectl apply -f https://operatorhub.io/install/ibmcloud-operator.yaml --validate=false
 check_exit "Failed to deploy IBM Cloud Operator. Ensure the ${CLUSTER_NAME} cluster is available."
+echo -e "\n   Configuring IBM Cloud Operator...\n"
 curl -sL https://raw.githubusercontent.com/IBM/cloud-operators/master/hack/config-operator.sh | bash
 check_exit "Failed to configure IBM Cloud Operator. Check the command output and try again."
 
