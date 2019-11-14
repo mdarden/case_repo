@@ -90,7 +90,8 @@ ibmcloud resource groups
 
 echo -e "\nTargeting resource group ${RESOURCE_GROUP}...\n"
 # ibmcloud target -r us-south -g ${RESOURCE_GROUP}
-ibmcloud target --cf-api https://test.cloud.ibm.com -o mdarden@us.ibm.com -s dev -r us-south -g ${RESOURCE_GROUP}
+# ibmcloud target --cf-api https://api.us-south.cf.test.cloud.ibm.com -o mdarden@us.ibm.com -s dev -r us-south -g ${RESOURCE_GROUP}
+ibmcloud target --cf -o mdarden@us.ibm.com -s dev -r us-south -g ${RESOURCE_GROUP}
 
 echo -e "\nLogging in to openshift...\n"
 oc login ${ROKS_SERVER} -u apikey -p ${API_KEY}
