@@ -73,6 +73,7 @@ function check_exit_custom {
 # check_input "$CLUSTER_NAME" "No cluster name was supplied. Execute 'ibmcloud ks clusters' to list available clusters."
 # check_input "$TEMPLATE_FILE" "No template file was supplied."
 
+
 echo -e "\nLogging in to IBM Cloud...\n"
 # ibmcloud api https://test.cloud.ibm.com
 ibmcloud login -a https://test.cloud.ibm.com -r us-south --apikey ${API_KEY}
@@ -87,6 +88,16 @@ ibmcloud ks cluster ls
 
 echo -e "\nListing resource groups...\n"
 ibmcloud resource groups
+
+# ibmcloud target command uses https://mccp.us-south.cf.test.cloud.ibm.com end point to set org and space.
+# We need to whitelist source and destination IPs to access mccp endpoint from public container (from which Schematics runs)
+# so let's get source and destination IPs
+echo -e "\nsource ip(s)\n"
+hostname -I
+
+echo -e "\ndestination ips\n"
+nslookup mccp.us-south.cf.test.cloud.ibm.com
+
 
 echo -e "\nTargeting resource group ${RESOURCE_GROUP}...\n"
 ibmcloud target -r us-south -o mdarden@us.ibm.com -s dev -g ${RESOURCE_GROUP}
