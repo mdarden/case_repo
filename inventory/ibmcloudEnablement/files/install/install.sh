@@ -95,12 +95,14 @@ ibmcloud resource groups
 echo -e "\nsource ip(s)\n"
 hostname -I
 
-echo -e "\nInstalling nslookup\n"
-yum -y install bind-utils
+# echo -e "\nInstalling nslookup\n"
+# yum -y install bind-utils
+
+# echo -e "\ndestination ips\n"
+# nslookup mccp.us-south.cf.test.cloud.ibm.com
 
 echo -e "\ndestination ips\n"
-nslookup mccp.us-south.cf.test.cloud.ibm.com
-
+getent hosts mccp.us-south.cf.test.cloud.ibm.com
 
 echo -e "\nTargeting resource group ${RESOURCE_GROUP}...\n"
 ibmcloud target -r us-south -o mdarden@us.ibm.com -s dev -g ${RESOURCE_GROUP}
