@@ -82,16 +82,23 @@ echo -e "\nLogging in to IBM Cloud...\n"
 echo ${API_KEY}
 ibmcloud login -a https://test.cloud.ibm.com -r us-south --apikey ${API_KEY}
 
-#install ks plugin
-echo -e "\nInstalling ks plugin...\n"
-ibmcloud plugin install container-service -f
+echo -e "\nListing resource groups...\n"
+ibmcloud resource groups
+
+echo -e "\nTargeting resource group ${RESOURCE_GROUP}...\n"
+ibmcloud target -r us-south -o mdarden@us.ibm.com -s dev -g ${RESOURCE_GROUP}
+# ibmcloud target --cf-api https://api.us-south.cf.test.cloud.ibm.com -o mdarden@us.ibm.com -s dev -r us-south -g ${RESOURCE_GROUP}
+# ibmcloud target --cf -o mdarden@us.ibm.com -s dev -r us-south -g ${RESOURCE_GROUP}
+
+#REMOVE for local runs
+# #install ks plugin
+# echo -e "\nInstalling ks plugin...\n"
+# ibmcloud plugin install container-service -f
+#END REMOVE
 
 # ibmcloud target --cf -r us-south -g ${RESOURCE_GROUP}
 echo -e "\nListing clusters...\n"
 ibmcloud ks cluster ls
-
-echo -e "\nListing resource groups...\n"
-ibmcloud resource groups
 
 # ibmcloud target command uses https://mccp.us-south.cf.test.cloud.ibm.com end point to set org and space.
 # We need to whitelist source and destination IPs to access mccp endpoint from public container (from which Schematics runs)
@@ -107,11 +114,6 @@ hostname -I
 
 echo -e "\ndestination ips\n"
 getent hosts mccp.us-south.cf.test.cloud.ibm.com
-
-echo -e "\nTargeting resource group ${RESOURCE_GROUP}...\n"
-ibmcloud target -r us-south -o mdarden@us.ibm.com -s dev -g ${RESOURCE_GROUP}
-# ibmcloud target --cf-api https://api.us-south.cf.test.cloud.ibm.com -o mdarden@us.ibm.com -s dev -r us-south -g ${RESOURCE_GROUP}
-# ibmcloud target --cf -o mdarden@us.ibm.com -s dev -r us-south -g ${RESOURCE_GROUP}
 
 echo -e "\nLogging in to openshift...\n"
 oc login ${ROKS_SERVER} -u apikey -p ${API_KEY}
