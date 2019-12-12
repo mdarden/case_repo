@@ -20,13 +20,15 @@ function usage {
     echo "Defaults to the template file located in /openshift/templates."
 }
 
-# function check_input {
-#     if [[ -z "$1" ]]; then
-#         echo "$2"
-#         usage
-#         exit 1
-#     fi
-# }
+# REMOVE when running with Schematics/Terraform worker
+function check_input {
+    if [[ -z "$1" ]]; then
+        echo "$2"
+        usage
+        exit 1
+    fi
+}
+# END REMOVE
 
 function check_exit {
     check_exit_custom $? $2
@@ -39,40 +41,41 @@ function check_exit_custom {
     fi
 }
 
-# for arg in "$@"
-# do
-#     if [ "$arg" == "--help" ] || [ "$arg" == "-h" ]; then
-#         usage
-#         exit 0
-#     fi
+# REMOVE when running with Schematics/Terraform worker
+for arg in "$@"
+do
+    if [ "$arg" == "--help" ] || [ "$arg" == "-h" ]; then
+        usage
+        exit 0
+    fi
 
-#     if [[ $arg == --apikey=* ]]; then
-#         API_KEY=$( echo $arg | cut -d'=' -f 2 )
-#     fi
+    if [[ $arg == --apikey=* ]]; then
+        API_KEY=$( echo $arg | cut -d'=' -f 2 )
+    fi
 
-#     if [[ $arg == --resource-group-id=* ]]; then
-#         RESOURCE_GROUP=$( echo $arg | cut -d'=' -f 2 )
-#     fi
+    if [[ $arg == --resource-group-id=* ]]; then
+        RESOURCE_GROUP=$( echo $arg | cut -d'=' -f 2 )
+    fi
 
-#     if [[ $arg == --cluster-name=* ]]; then
-#         CLUSTER_NAME=$( echo $arg | cut -d'=' -f 2 )
-#     fi
+    if [[ $arg == --cluster-name=* ]]; then
+        CLUSTER_NAME=$( echo $arg | cut -d'=' -f 2 )
+    fi
 
-#     if [[ $arg == --template-file=* ]]; then
-#         TEMPLATE_FILE=$( echo $arg | cut -d'=' -f 2 )
-#     fi
-# done
+    if [[ $arg == --template-file=* ]]; then
+        TEMPLATE_FILE=$( echo $arg | cut -d'=' -f 2 )
+    fi
+done
 
-# if [[ -z "$TEMPLATE_FILE" ]]; then
-#     TEMPLATE_FILE=$PWD/openshift/templates/clone.json
-# fi
-# echo "Using template file $TEMPLATE_FILE"
+if [[ -z "$TEMPLATE_FILE" ]]; then
+    TEMPLATE_FILE=$PWD/openshift/templates/clone.json
+fi
+echo "Using template file $TEMPLATE_FILE"
 
-# check_input "$API_KEY" "No API key was supplied. A valid IBM Cloud API key is required to login to the IBM Cloud. Use 'ibmcloud iam api-key-create' to create an API key."
-# check_input "$RESOURCE_GROUP" "No resource group ID was supplied. Execute 'ibmcloud resource groups' to list resource groups."
-# check_input "$CLUSTER_NAME" "No cluster name was supplied. Execute 'ibmcloud ks clusters' to list available clusters."
-# check_input "$TEMPLATE_FILE" "No template file was supplied."
-
+check_input "$API_KEY" "No API key was supplied. A valid IBM Cloud API key is required to login to the IBM Cloud. Use 'ibmcloud iam api-key-create' to create an API key."
+check_input "$RESOURCE_GROUP" "No resource group ID was supplied. Execute 'ibmcloud resource groups' to list resource groups."
+check_input "$CLUSTER_NAME" "No cluster name was supplied. Execute 'ibmcloud ks clusters' to list available clusters."
+check_input "$TEMPLATE_FILE" "No template file was supplied."
+# END REMOVE
 
 echo -e "\nLogging in to IBM Cloud...\n"
 # ibmcloud api https://test.cloud.ibm.com
