@@ -21,13 +21,13 @@ function usage {
 }
 
 # REMOVE when running with Schematics/Terraform worker
-function check_input {
-    if [[ -z "$1" ]]; then
-        echo "$2"
-        usage
-        exit 1
-    fi
-}
+# function check_input {
+#     if [[ -z "$1" ]]; then
+#         echo "$2"
+#         usage
+#         exit 1
+#     fi
+# }
 # END REMOVE
 
 function check_exit {
@@ -42,39 +42,39 @@ function check_exit_custom {
 }
 
 # REMOVE when running with Schematics/Terraform worker
-for arg in "$@"
-do
-    if [ "$arg" == "--help" ] || [ "$arg" == "-h" ]; then
-        usage
-        exit 0
-    fi
+# for arg in "$@"
+# do
+#     if [ "$arg" == "--help" ] || [ "$arg" == "-h" ]; then
+#         usage
+#         exit 0
+#     fi
 
-    if [[ $arg == --apikey=* ]]; then
-        API_KEY=$( echo $arg | cut -d'=' -f 2 )
-    fi
+#     if [[ $arg == --apikey=* ]]; then
+#         API_KEY=$( echo $arg | cut -d'=' -f 2 )
+#     fi
 
-    if [[ $arg == --resource-group-id=* ]]; then
-        RESOURCE_GROUP=$( echo $arg | cut -d'=' -f 2 )
-    fi
+#     if [[ $arg == --resource-group-id=* ]]; then
+#         RESOURCE_GROUP=$( echo $arg | cut -d'=' -f 2 )
+#     fi
 
-    if [[ $arg == --cluster-name=* ]]; then
-        CLUSTER_NAME=$( echo $arg | cut -d'=' -f 2 )
-    fi
+#     if [[ $arg == --cluster-name=* ]]; then
+#         CLUSTER_NAME=$( echo $arg | cut -d'=' -f 2 )
+#     fi
 
-    if [[ $arg == --template-file=* ]]; then
-        TEMPLATE_FILE=$( echo $arg | cut -d'=' -f 2 )
-    fi
-done
+#     if [[ $arg == --template-file=* ]]; then
+#         TEMPLATE_FILE=$( echo $arg | cut -d'=' -f 2 )
+#     fi
+# done
 
-if [[ -z "$TEMPLATE_FILE" ]]; then
-    TEMPLATE_FILE=$PWD/openshift/templates/clone.json
-fi
-echo "Using template file $TEMPLATE_FILE"
+# if [[ -z "$TEMPLATE_FILE" ]]; then
+#     TEMPLATE_FILE=$PWD/openshift/templates/clone.json
+# fi
+# echo "Using template file $TEMPLATE_FILE"
 
-check_input "$API_KEY" "No API key was supplied. A valid IBM Cloud API key is required to login to the IBM Cloud. Use 'ibmcloud iam api-key-create' to create an API key."
-check_input "$RESOURCE_GROUP" "No resource group ID was supplied. Execute 'ibmcloud resource groups' to list resource groups."
-check_input "$CLUSTER_NAME" "No cluster name was supplied. Execute 'ibmcloud ks clusters' to list available clusters."
-check_input "$TEMPLATE_FILE" "No template file was supplied."
+# check_input "$API_KEY" "No API key was supplied. A valid IBM Cloud API key is required to login to the IBM Cloud. Use 'ibmcloud iam api-key-create' to create an API key."
+# check_input "$RESOURCE_GROUP" "No resource group ID was supplied. Execute 'ibmcloud resource groups' to list resource groups."
+# check_input "$CLUSTER_NAME" "No cluster name was supplied. Execute 'ibmcloud ks clusters' to list available clusters."
+# check_input "$TEMPLATE_FILE" "No template file was supplied."
 # END REMOVE
 
 echo -e "\nLogging in to IBM Cloud...\n"
@@ -90,10 +90,10 @@ ibmcloud target -r us-south -o mdarden@us.ibm.com -s dev -g ${RESOURCE_GROUP}
 # ibmcloud target --cf-api https://api.us-south.cf.test.cloud.ibm.com -o mdarden@us.ibm.com -s dev -r us-south -g ${RESOURCE_GROUP}
 # ibmcloud target --cf -o mdarden@us.ibm.com -s dev -r us-south -g ${RESOURCE_GROUP}
 
-#REMOVE for local runs
-# #install ks plugin
-# echo -e "\nInstalling ks plugin...\n"
-# ibmcloud plugin install container-service -f
+# REMOVE for local runs
+install ks plugin
+echo -e "\nInstalling ks plugin...\n"
+ibmcloud plugin install container-service -f
 #END REMOVE
 
 # ibmcloud target --cf -r us-south -g ${RESOURCE_GROUP}
