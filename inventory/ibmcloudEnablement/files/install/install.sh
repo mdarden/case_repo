@@ -151,6 +151,10 @@ check_exit "Failed to configure IBM Cloud Operator. Check the command output and
 
 # Create and manually install a new template to the catalog -- this will also be scoped for that cluster only.
 echo -e "\nInstalling template ${TEMPLATE_FILE}...\n"
-oc -n openshift apply -f "${TEMPLATE_FILE}"
+# curl https://raw.githubusercontent.com/mdarden/nodejs-cloudant/master/openshift/templates/clone.json -o file1.json
+curl "${TEMPLATE_FILE}" -o clone.json
+# oc -n openshift apply -f "${TEMPLATE_FILE}"
+oc -n openshift apply -f clone.json
+
 check_exit "Failed to install template ${TEMPLATE_FILE}. Ensure the template definition is valid and try again."
 echo -e "\nTemplate installation succeeded!"
