@@ -1,6 +1,6 @@
 The IBM Starter Collection for Openshift installs new starter templates into the Developer Catalog for an OpenShift cluster so that OpenShift developers can easily find and use them. All the templates in this collection run on OpenShift, but automatically provision and use managed services from the IBM Cloud public catalog.
 
-Before installing this starter collection, you must have an OpenShift cluster on IBM Cloud.  If you don't [create one here.](https://cloud.ibm.com/kubernetes/catalog/openshiftcluster). Note clusters may take 30 minutes or more to provision.
+Before installing this starter collection, you must have an OpenShift cluster on IBM Cloud.  If you don't [create one here](https://cloud.ibm.com/kubernetes/catalog/openshiftcluster). Note clusters may take 30 minutes or more to provision.
 
 You will need these pieces of information to install the starter collection:
 
