@@ -80,13 +80,13 @@ function check_exit_custom {
 echo -e "\nLogging in to IBM Cloud...\n"
 # ibmcloud api https://test.cloud.ibm.com
 echo ${API_KEY}
-ibmcloud login -a https://test.cloud.ibm.com -r us-south --apikey ${API_KEY}
+# ibmcloud login -a https://test.cloud.ibm.com -r us-south --apikey ${API_KEY}
 
 echo -e "\nListing resource groups...\n"
-ibmcloud resource groups
+# ibmcloud resource groups
 
 echo -e "\nTargeting resource group ${RESOURCE_GROUP}...\n"
-ibmcloud target -r us-south -o mdarden@us.ibm.com -s dev -g ${RESOURCE_GROUP}
+# ibmcloud target -r us-south -o mdarden@us.ibm.com -s dev -g ${RESOURCE_GROUP}
 # ibmcloud target --cf-api https://api.us-south.cf.test.cloud.ibm.com -o mdarden@us.ibm.com -s dev -r us-south -g ${RESOURCE_GROUP}
 # ibmcloud target --cf -o mdarden@us.ibm.com -s dev -r us-south -g ${RESOURCE_GROUP}
 
@@ -154,9 +154,9 @@ check_exit "Failed to configure IBM Cloud Operator. Check the command output and
 # Create and manually install a new template to the catalog -- this will also be scoped for that cluster only.
 echo -e "\nInstalling template ${TEMPLATE_FILE}...\n"
 # curl https://raw.githubusercontent.com/mdarden/nodejs-cloudant/master/openshift/templates/clone.json -o file1.json
-curl "${TEMPLATE_FILE}" -o clone.json
+# curl "${TEMPLATE_FILE}" -o clone.json
 # oc -n openshift apply -f "${TEMPLATE_FILE}"
-oc -n openshift apply -f clone.json
+# oc -n openshift apply -f clone.json
 
 check_exit "Failed to install template ${TEMPLATE_FILE}. Ensure the template definition is valid and try again."
 echo -e "\nTemplate installation succeeded!"
