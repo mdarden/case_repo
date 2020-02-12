@@ -13,7 +13,7 @@ Before installing this template, you must have an OpenShift cluster on IBM Cloud
 
 ---
 
-You will need these pieces of information to install the starter collection:
+You will need to fill out the  following parameters to install the starter kit collection:
 
 | Parameter | Description | Value |
 |---|---|---|
@@ -22,9 +22,6 @@ You will need these pieces of information to install the starter collection:
 | clusterName | Name of the cluster to which you will add the collection| Find this in the resources list of you cloud console dashboard, or in the cluster details view for your cluster. |
 | resourceGroup	| Resource group for the cluster to which you will add the collection | Find this in the resources list of you cloud console dashboard, or in the cluster details view for your cluster. |
 
-After filling in the required information, click the license acknowledgement checkbox and then click the install button.
+After filling in the required information, review the license agreement checkbox and then click the install button.
 
 IBM Cloud platform will use Schematics to automatically install the starter templates into your OpenShift Developer Catalog.  After installation is complete (usually about 10 minutes), reload your OpenShift web console to see the new tiles in your Developer Catalog.  Click the individual starter tiles to learn more about each.
-
-
-

@@ -1,1 +1,1 @@
-This is the install script readme.
+The install script adds the starter kit collection to your OpenShift cluster.
