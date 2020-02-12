@@ -1,1 +1,1 @@
-from readme.  There is not pre-install script
+There is no pre-install script for this template.
