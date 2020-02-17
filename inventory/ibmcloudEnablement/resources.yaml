@@ -5,3 +5,5 @@ resources:
      files:
       - ref: files/install/install.sh
       - ref: files/install/uninstall.sh
+      - ref: files/install/values-metadata.yaml
+      - ref: files/install/README.md
