@@ -1,1 +1,0 @@
-The install script adds the starter kit collection to your OpenShift cluster.

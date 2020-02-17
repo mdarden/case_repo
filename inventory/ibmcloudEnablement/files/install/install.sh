@@ -1,18 +1,4 @@
 #!/bin/bash
-export RESOURCE_GROUP=${resourceGroup}
-export CLUSTER_NAME=${clusterName}
-export TEMPLATE_FILE=${templateFile}
-export API_KEY=${apiKey}
-export ROKS_TOKEN=${osToken}
-export ROKS_SERVER=${roksServer}
-
-echo "printing working directory"
-pwd
-echo "listing directory contents"
-ls -al
-echo "printing environment variables"
-printenv
-
 git clone https://github.com/mdarden/case_repo.git
 cd case_repo
 

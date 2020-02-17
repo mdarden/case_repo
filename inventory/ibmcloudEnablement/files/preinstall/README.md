@@ -1,1 +1,0 @@
-There is no pre-install script for this template.
