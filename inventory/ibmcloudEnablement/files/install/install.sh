@@ -6,4 +6,4 @@ export API_KEY=${apiKey}
 export ROKS_TOKEN=${osToken}
 export ROKS_SERVER=${roksServer}
 
-oc projects
+oc -n openshift apply -f templates/nodejs-express-app.json
