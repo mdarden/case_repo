@@ -10,5 +10,7 @@ echo "printing working directory"
 pwd
 echo "listing directory contents"
 ls -al
+echo "printing environment variables"
+printenv
 
 oc -n openshift apply -f ./templates/nodejs-express-app.json
