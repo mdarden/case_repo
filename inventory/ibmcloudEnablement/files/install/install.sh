@@ -6,5 +6,9 @@ export API_KEY=${apiKey}
 export ROKS_TOKEN=${osToken}
 export ROKS_SERVER=${roksServer}
 
+echo "printing working directory"
 pwd
+echo "listing directory contents"
+ls -al
+
 oc -n openshift apply -f ./templates/nodejs-express-app.json
