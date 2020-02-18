@@ -176,7 +176,7 @@
                     "initialDelaySeconds": 30,
                     "httpGet": {
                       "path": "/",
-                      "port": 3000
+                      "port": 8080
                     }
                   },
                   "resources": {
