@@ -2,22 +2,22 @@
     "kind": "Template",
     "apiVersion": "v1",
     "metadata": {
-      "name": "nodejs-express-app",
+      "name": "python-flask-app",
       "annotations": {
-        "openshift.io/display-name": "Node.js Express App",
-        "description": "Start building your next Node.js Express app on IBM Cloud.",
-        "tags": "quickstart,nodejs,ibm",
-        "iconClass": "icon-nodejs",
-        "openshift.io/long-description": "The example application at https://github.com/IBM/nodejs-express-app creates a microservice using Express in Node.js, complete with standard best practices. A microservice is an individual component of an application that follows the microservice architecture - an architectural style that structures an application as a collection of loosely coupled services, which implement business capabilities. The microservice exposes a RESTful API matching a Swagger definition.",
+        "openshift.io/display-name": "Python Flask App",
+        "description": "Start building your next Python Flask app on IBM Cloud.",
+        "tags": "quickstart,python,ibm",
+        "iconClass": "icon-python",
+        "openshift.io/long-description": "The example application at https://github.com/IBM/python-flask-app creates a microservice using Flask in Python, complete with standard best practices. A microservice is an individual component of an application that follows the microservice architecture - an architectural style that structures an application as a collection of loosely coupled services, which implement business capabilities. The microservice exposes a RESTful API matching a Swagger definition.",
         "openshift.io/provider-display-name": "IBM",
-        "openshift.io/documentation-url": "https://github.com/IBM/nodejs-express-app/blob/development/README.md",
+        "openshift.io/documentation-url": "https://github.com/IBM/python-flask-app/blob/development/README.md",
         "openshift.io/support-url": "https://www.ibm.com/cloud/support"
       }
     },
-    "message": "A Node.js app is being generated. To view your deployment navigate to your project.",
+    "message": "A Python app is being generated. To view your deployment navigate to your project.",
     "labels": {
-      "template": "nodejs-express-app",
-      "app": "nodejs-express-app"
+      "template": "python-flask-app",
+      "app": "python-flask-app"
     },
     "objects": [
       {
@@ -192,7 +192,7 @@
         "displayName": "Name",
         "description": "The name for application and associated objects. Lowercase letters, numbers, and '-' only.",
         "required": true,
-        "value": "nodejs-express-app",
+        "value": "python-flask-app",
         "from": "[a-z0-9-]{40}"
       },
       {
@@ -200,7 +200,7 @@
         "displayName": "GitHub Repository",
         "description": "Source code for OpenShift to build and deploy. Have your own repo? Paste it here.",
         "required": true,
-        "value": "https://github.com/IBM/nodejs-express-app.git"
+        "value": "https://github.com/IBM/python-flask-app.git"
       },
       {
         "name": "BRANCH",

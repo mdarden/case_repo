@@ -6,8 +6,6 @@ These starter kits are included in the deployment:
 * [Python Flask App](https://github.com/IBM/python-flask-app)
 * [Python Django App](https://github.com/IBM/python-django-app)
 * [Java Spring App](https://github.com/IBM/java-spring-app)
-* [Java Liberty App](https://github.com/IBM/java-liberty-app)
-* [Swift Kitura App](https://github.com/IBM/swift-kitura-app)
 
 Before installing this template, you must have an OpenShift cluster on IBM Cloud.  If you don't [create one here](https://cloud.ibm.com/kubernetes/catalog/openshiftcluster). Note clusters may take 30 minutes or more to provision.
 

@@ -2,22 +2,22 @@
     "kind": "Template",
     "apiVersion": "v1",
     "metadata": {
-      "name": "nodejs-express-app",
+      "name": "go-gin-app",
       "annotations": {
-        "openshift.io/display-name": "Node.js Express App",
-        "description": "Start building your next Node.js Express app on IBM Cloud.",
-        "tags": "quickstart,nodejs,ibm",
-        "iconClass": "icon-nodejs",
-        "openshift.io/long-description": "The example application at https://github.com/IBM/nodejs-express-app creates a microservice using Express in Node.js, complete with standard best practices. A microservice is an individual component of an application that follows the microservice architecture - an architectural style that structures an application as a collection of loosely coupled services, which implement business capabilities. The microservice exposes a RESTful API matching a Swagger definition.",
+        "openshift.io/display-name": "Go Gin App",
+        "description": "Start building your next Go Gin app on IBM Cloud.",
+        "tags": "quickstart,go,ibm",
+        "iconClass": "icon-go-gopher",
+        "openshift.io/long-description": "The example application at https://github.com/IBM/go-gin-app creates a microservice using Gin in Go, complete with standard best practices. A microservice is an individual component of an application that follows the microservice architecture - an architectural style that structures an application as a collection of loosely coupled services, which implement business capabilities. The microservice exposes a RESTful API matching a Swagger definition.",
         "openshift.io/provider-display-name": "IBM",
-        "openshift.io/documentation-url": "https://github.com/IBM/nodejs-express-app/blob/development/README.md",
+        "openshift.io/documentation-url": "https://github.com/IBM/go-gin-app/blob/development/README.md",
         "openshift.io/support-url": "https://www.ibm.com/cloud/support"
       }
     },
-    "message": "A Node.js app is being generated. To view your deployment navigate to your project.",
+    "message": "A Go app is being generated. To view your deployment navigate to your project.",
     "labels": {
-      "template": "nodejs-express-app",
-      "app": "nodejs-express-app"
+      "template": "go-gin-app",
+      "app": "go-gin-app"
     },
     "objects": [
       {
@@ -33,8 +33,8 @@
           "ports": [
             {
               "name": "web",
-              "port": 3000,
-              "targetPort": 3000
+              "port": 8080,
+              "targetPort": 8080
             }
           ],
           "selector": {
@@ -155,7 +155,7 @@
                   "image": "${NAME}",
                   "ports": [
                     {
-                      "containerPort": 3000
+                      "containerPort": 8080
                     }
                   ],
                   "readinessProbe": {
@@ -163,7 +163,7 @@
                     "initialDelaySeconds": 3,
                     "httpGet": {
                       "path": "/",
-                      "port": 3000
+                      "port": 8080
                     }
                   },
                   "livenessProbe": {
@@ -171,7 +171,7 @@
                     "initialDelaySeconds": 30,
                     "httpGet": {
                       "path": "/",
-                      "port": 3000
+                      "port": 8080
                     }
                   },
                   "resources": {
@@ -192,7 +192,7 @@
         "displayName": "Name",
         "description": "The name for application and associated objects. Lowercase letters, numbers, and '-' only.",
         "required": true,
-        "value": "nodejs-express-app",
+        "value": "go-gin-app",
         "from": "[a-z0-9-]{40}"
       },
       {
@@ -200,7 +200,7 @@
         "displayName": "GitHub Repository",
         "description": "Source code for OpenShift to build and deploy. Have your own repo? Paste it here.",
         "required": true,
-        "value": "https://github.com/IBM/nodejs-express-app.git"
+        "value": "https://github.com/IBM/go-gin-app.git"
       },
       {
         "name": "BRANCH",

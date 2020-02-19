@@ -85,13 +85,8 @@
           },
           "strategy": {
             "type": "Source",
-            "sourceStrategy": {
-              "from": {
-                "kind": "ImageStreamTag",
-                "namespace": "openshift",
-                "name": "java:latest"
-              },
-              "env": []
+            "dockerStrategy": {
+                "dockerfilePath": "Dockerfile"
             }
           },
           "output": {
@@ -202,15 +197,15 @@
       },
       {
         "name": "GITHUB_REPO",
-        "displayName": "Github Repository",
-        "description": "Source code for openshift to build and deploy. Have your own repo? Paste it here.",
+        "displayName": "GitHub Repository",
+        "description": "Source code for OpenShift to build and deploy. Have your own repo? Paste it here.",
         "required": true,
         "value": "https://github.com/IBM/java-spring-app.git"
       },
       {
         "name": "BRANCH",
         "displayName": "Branch Name",
-        "description": "Github repo branch name, default is 'master'",
+        "description": "GitHub repo branch name, default is 'master'",
         "required": true,
         "value": "master"
       },

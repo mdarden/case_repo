@@ -24,8 +24,6 @@ These starter kits are included in the deployment:
 * [Python Flask App](https://github.com/IBM/python-flask-app)
 * [Python Django App](https://github.com/IBM/python-django-app)
 * [Java Spring App](https://github.com/IBM/java-spring-app)
-* [Java Liberty App](https://github.com/IBM/java-liberty-app)
-* [Swift Kitura App](https://github.com/IBM/swift-kitura-app)
 
 ## Steps
 
