@@ -32,7 +32,7 @@ These starter kits are included in the deployment:
 
 ## Steps
 1. Navigate to OperatorHub and have a System Administrator install the [IBM Cloud Operator](https://operatorhub.io/operator/ibmcloud-operator) to your OpenShift cluster.
-2. [Deploy this template](placeholder-link) using the IBM Cloud Schematics service. After a successful deployment, you can can view and deploy the starter kits from within your OpenShift cluster.
+2. [Deploy the templates](placeholder-link) using the IBM Cloud Schematics service. After a successful deployment, you can can view and deploy the starter kits from within your OpenShift cluster.
 
 ## License
 
