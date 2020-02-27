@@ -181,7 +181,7 @@
                   ],
                   "env": [
                     {
-                      "name": "VISUAL_RECOGNITION_URL", 
+                      "name": "WATSON_VISION_COMBINED_URL",
                       "valueFrom": {
                         "secretKeyRef" : {
                           "name" : "${NAME}",
@@ -190,7 +190,7 @@
                       }
                     },
                     {
-                      "name": "VISUAL_RECOGNITION_APIKEY", 
+                      "name": "WATSON_VISION_COMBINED_APIKEY",
                       "valueFrom": {
                         "secretKeyRef" : {
                           "name" : "${NAME}",
